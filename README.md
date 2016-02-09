@@ -45,6 +45,18 @@ Example
     - ntp
 ```
 
+This role requires [Config
+Encoders](https://github.com/jtyr/ansible/blob/jtyr-config_encoders/lib/ansible/plugins/filter/config_encoders.py)
+which must be configured in the `ansible.cfg` file like this:
+
+```
+[defaults]
+
+filter_plugins = ./plugins/filter/
+```
+
+Where the `./plugins/filter/` containes the `config_encoders.py` file.
+
 
 Role variables
 --------------
@@ -103,7 +115,7 @@ ntp_config: "{{
 Dependencies
 ------------
 
-* [Config Encoder Macros](https://github.com/picotrading/config-encoder-macros)
+- [Config Encoders](https://github.com/jtyr/ansible/blob/jtyr-config_encoders/lib/ansible/plugins/filter/config_encoders.py)
 
 
 License
