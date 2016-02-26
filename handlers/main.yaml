@@ -1,6 +1,9 @@
 ---
 
-- name: Restart ntp service
+- name: Restart NTP service
   service:
     name: "{{ ntp_service }}"
     state: restarted
+  when: >
+    ntp_service_started is not defined or
+    not ntp_service_started.changed

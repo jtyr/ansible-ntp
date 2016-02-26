@@ -3,26 +3,38 @@
 - name: Test distribution
   assert:
     that: >
+      ansible_os_family == "Debian" or
       ansible_os_family == "RedHat"
 
-- name: Install ntp
-  yum:
+- name: Install NTP
+  package:
     name: "{{ ntp_pkg }}"
     state: present
+  notify:
+    - Restart NTP service
   tags:
     - ntp_pkg
 
-- name: Configure ntp
+- name: Configure NTP
   template:
     src: ntp.conf.j2
     dest: "{{ ntp_conf_file }}"
+  register: ntp_config_result
   notify:
-    - Restart ntp service
+    - Restart NTP service
   tags:
     - ntp_config
 
-- name: Make sure ntpd is enabled and running
+- name: Make sure NTP service is enabled
+  service:
+    name: "{{ ntp_service }}"
+    enabled: true
+
+- name: Make sure NTP service is running
   service:
     name: "{{ ntp_service }}"
     enabled: true
     state: running
+  register: ntp_service_started
+  when: >
+      not ntp_config_result.changed
