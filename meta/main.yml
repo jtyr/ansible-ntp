@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: Jiri Tyr
-  description: Role which helps to install ntp
+  description: Role which helps to install NTP.
   license: MIT
   min_ansible_version: 2.0
   platforms:
@@ -14,4 +14,5 @@ galaxy_info:
         - all
   categories:
     - system
-dependencies: []
+dependencies:
+  - config_encoder_filters
