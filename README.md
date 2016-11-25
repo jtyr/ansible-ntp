@@ -27,7 +27,7 @@ Example
 - hosts: myhost1
   vars:
     # Override the default variable
-    ntp_server:
+    ntp_config_server:
       - 0.uk.pool.ntp.org
       - 1.uk.pool.ntp.org
       - 2.uk.pool.ntp.org
