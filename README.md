@@ -18,13 +18,13 @@ Example
 ```
 ---
 
-# Default installation
-- hosts: myhost1
+- name: Default installation
+  hosts: myhost1
   roles:
     - ntp
 
-# Example of how to set custon NTP server list
-- hosts: myhost1
+- name: Example of how to set custon NTP server list
+  hosts: myhost1
   vars:
     # Override the default variable
     ntp_config_server:
@@ -35,8 +35,8 @@ Example
   roles:
     - ntp
 
-# Example of how to extend the default configuration
-- hosts: myhost2
+- name: Example of how to extend the default configuration
+  hosts: myhost2
   vars:
     # Adding a custom log file on the top of the default configuration
     ntp_config_custom:

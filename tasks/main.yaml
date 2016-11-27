@@ -5,6 +5,8 @@
     that: >
       ansible_os_family == "Debian" or
       ansible_os_family == "RedHat"
+  tags:
+    - ntp_assert
 
 - name: Install NTP
   package:
@@ -19,22 +21,22 @@
   template:
     src: ntp.conf.j2
     dest: "{{ ntp_conf_file }}"
-  register: ntp_config_result
   notify:
     - Restart NTP service
   tags:
     - ntp_config
 
-- name: Make sure NTP service is enabled
+- name: Enable NTP service
   service:
     name: "{{ ntp_service }}"
     enabled: true
+  tags:
+    - ntp_service
 
-- name: Make sure NTP service is running
+- name: Start NTP service
   service:
     name: "{{ ntp_service }}"
-    enabled: true
     state: running
   register: ntp_service_started
-  when: >
-      not ntp_config_result.changed
+  tags:
+    - ntp_service
