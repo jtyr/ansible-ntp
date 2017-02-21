@@ -25,6 +25,7 @@ ntp_config_restrict_default:
   - "-4 default kod notrap nomodify nopeer noquery"
   - "-6 default kod notrap nomodify nopeer noquery"
   - 127.0.0.1
+  - ::1
 
 # Custom restrictions
 ntp_config_restrict_custom: []
