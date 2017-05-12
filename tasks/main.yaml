@@ -35,7 +35,7 @@
 - name: Start NTP service
   service:
     name: "{{ ntp_service }}"
-    state: running
+    state: started
   register: ntp_service_started
   tags:
     - ntp_service
