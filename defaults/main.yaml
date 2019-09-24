@@ -45,5 +45,5 @@ ntp_config_custom: {}
 
 # Default ntp configuration
 ntp_config: "{{
-  ntp_config_default.update(
-  ntp_config_custom)}}{{ ntp_config_default }}"
+  ntp_config_default | combine(
+  ntp_config_custom) }}"

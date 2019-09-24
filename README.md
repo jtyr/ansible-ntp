@@ -15,7 +15,7 @@ Please report any issues or send PR.
 Example
 -------
 
-```
+```yaml
 ---
 
 - name: Default installation
@@ -51,7 +51,7 @@ Role variables
 
 List of variables used by the role:
 
-```
+```yaml
 # Package to be installed (you can force a specific version here)
 ntp_pkg: ntp
 
